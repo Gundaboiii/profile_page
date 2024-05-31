@@ -18,4 +18,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/images/Profile1.jpg
+    - assets/images/ludo.png
+    - assets/images/x.png
+    - assets/images/google.png
