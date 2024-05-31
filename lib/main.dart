@@ -1,5 +1,593 @@
+//profile page
 import 'package:flutter/material.dart';
 
+// Data model class for user information
+class UserInfo {
+  final String name;
+  final String position;
+  final String company;
+  final String phone;
+  final String email;
+  final String address;
+  final List<EducationInfo> education;
+  final List<ProjectInfo> projects;
+
+  UserInfo({
+    required this.name,
+    required this.position,
+    required this.company,
+    required this.phone,
+    required this.email,
+    required this.address,
+    required this.education,
+    required this.projects,
+  });
+}
+
+// Data model class for education information
+class EducationInfo {
+  final String logo;
+  final String name;
+  final String gpa;
+
+  EducationInfo({
+    required this.logo,
+    required this.name,
+    required this.gpa,
+  });
+}
+
+// Data model class for project information
+class ProjectInfo {
+  final String title;
+  final String description;
+
+  ProjectInfo({
+    required this.title,
+    required this.description,
+  });
+}
+
+// UserInfoPage widget to display user information
+class UserInfoPage extends StatelessWidget {
+  final UserInfo userInfo;
+
+  UserInfoPage({required this.userInfo});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User Information'),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Name: ${userInfo.name}',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
+            Text('Position: ${userInfo.position}'),
+            Text('Company: ${userInfo.company}'),
+            Text('Phone: ${userInfo.phone}'),
+            Text('Email: ${userInfo.email}'),
+            Text('Address: ${userInfo.address}'),
+            SizedBox(height: 16.0),
+            Text(
+              'Education:',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: userInfo.education
+                  .map((edu) => ListTile(
+                        leading: Image.asset(
+                          edu.logo,
+                          width: 50,
+                          height: 50,
+                        ),
+                        title: Text(edu.name),
+                        subtitle: Text('GPA: ${edu.gpa.toString()}'),
+                      ))
+                  .toList(),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'Projects:',
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: userInfo.projects
+                  .map((project) => ListTile(
+                        title: Text(project.title),
+                        subtitle: Text(project.description),
+                      ))
+                  .toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// The main function is starting point for all the flutter apps.
 void main() {
-  runApp(const Placeholder());
+  UserInfo userInfo = UserInfo(
+    name: 'Ronak Dhingra',
+    position: 'Software Developer',
+    company: 'Houzeo',
+    phone: '+1-312-774-6579',
+    email: 'ronaktsec@gmail.com',
+    address: '500 E 33rd St, Chicago, IL 60616',
+    education: [
+      EducationInfo(
+        logo: 'assets/images/iit.png',
+        name: 'Illinois Institute of Technology',
+        gpa: '3.8 GPA',
+      ),
+      EducationInfo(
+        logo: 'assets/images/tsec.png',
+        name: 'Thadomal Shahani Engineering College',
+        gpa: '3.56 GPA',
+      ),
+      // Add more education info as needed
+    ],
+    projects: [
+      ProjectInfo(
+        title: 'Reverse Ludo',
+        description: 'Description of Project 1',
+      ),
+      ProjectInfo(
+        title: 'Twitter Sentiment\n Analysis',
+        description: 'Description of Project 1',
+      ),
+      ProjectInfo(
+        title: 'Google Stock\n Price Prediction',
+        description: 'Description of Project 1',
+      ),
+      // Add more project info as needed
+    ],
+  );
+
+  // Hand the user info object to the root widget
+  runApp(Myapp(userInfo: userInfo));
+  // runApp(
+  //   Myapp(home: UserInfoPage(userInfo: userInfo)),
+  //   // Myapp(),
+  // );
+}
+
+class Myapp extends StatelessWidget {
+  final UserInfo userInfo;
+  const Myapp({Key? key, required this.userInfo}) : super(key: key);
+  // const Myapp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Align the column vertically
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Set the background color
+                  borderRadius:
+                      BorderRadius.circular(10), // Set the border radius
+                ),
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100, // Set the desired width
+                      height: 100, // Set the desired height
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          'images/Profile1.jpg',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      // padding: EdgeInsets.all(10.0),
+                      margin: EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              userInfo.name,
+                              style: TextStyle(
+                                fontFamily: 'Source Sans Pro',
+                                fontSize: 20,
+                                // letterSpacing: 2.5,
+                                color: Colors.teal.shade500,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            // padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              userInfo.position,
+                              style: TextStyle(
+                                fontFamily: 'Source Sans Pro',
+                                fontSize: 20.0,
+                                // letterSpacing: 2.5,
+                                color: Colors.teal.shade500,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              userInfo.company,
+                              // 'Techno Enterprise',
+                              style: TextStyle(
+                                fontFamily: 'Source Sans Pro',
+                                fontSize: 20.0,
+                                // letterSpacing: 2.5,
+                                color: Colors.teal.shade500,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Set the background color
+                  borderRadius:
+                      BorderRadius.circular(10), // Set the border radius
+                ),
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Container(
+                      // color: Colors.white,
+                      padding: EdgeInsets.all(10.0),
+                      // margin: EdgeInsets.symmetric(
+                      //   vertical: 10.0,
+                      //   horizontal: 25.0,
+                      // ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            color: Colors.teal,
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            userInfo.phone,
+                            style: TextStyle(
+                              color: Colors.teal.shade900,
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      // color: Colors.white,
+                      padding: EdgeInsets.all(10.0),
+                      // margin: EdgeInsets.symmetric(
+                      //   vertical: 10.0,
+                      //   horizontal: 25.0,
+                      // ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.email,
+                            color: Colors.teal,
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            userInfo.email,
+                            style: TextStyle(
+                              color: Colors.teal.shade900,
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      // color: Colors.white,
+                      padding: EdgeInsets.all(10.0),
+                      // margin: EdgeInsets.symmetric(
+                      //   vertical: 10.0,
+                      //   horizontal: 25.0,
+                      // ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.home,
+                            color: Colors.teal,
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Text(
+                            userInfo.address,
+                            style: TextStyle(
+                              color: Colors.teal.shade900,
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 20.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Container(
+                        // padding: EdgeInsets.symmetric(),
+                        child: Text(
+                          'Education',
+                          style: TextStyle(
+                            color: Colors.teal.shade900,
+                            fontFamily: 'Source Sans Pro',
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            // padding: EdgeInsets.symmetric(vertical: 10.0),
+                            padding: EdgeInsets.only(right: 30.0),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.school,
+                                  color: Colors.teal,
+                                ),
+                                SizedBox(
+                                  height: 20.0,
+                                ),
+                                Icon(
+                                  Icons.account_balance,
+                                  color: Colors.teal,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  userInfo.education[0].name,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                Text(
+                                  userInfo.education[1].name,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  userInfo.education[0].gpa,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                Text(
+                                  userInfo.education[1].gpa,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      // padding: EdgeInsets.all(10.0),
+                      child: Container(
+                        // padding: EdgeInsets.symmetric(),
+                        child: Text(
+                          'Projects',
+                          style: TextStyle(
+                            color: Colors.teal.shade900,
+                            fontFamily: 'Source Sans Pro',
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                width: 80,
+                                height: 90,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    'images/ludo.png',
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  // padding: EdgeInsets.symmetric(),
+                                  child: Text(
+                                    userInfo.projects[0].title,
+                                    // 'Hand Written \nDigit Prediction',
+                                    style: TextStyle(
+                                      color: Colors.teal.shade900,
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                width: 80, // Set the desired width
+                                height: 90, // Set the desired height
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    'images/x.png',
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(),
+                                  child: Text(
+                                    userInfo.projects[1].title,
+                                    // 'Twitter Sentiment\n Analysis',
+                                    style: TextStyle(
+                                      color: Colors.teal.shade900,
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                width: 80, // Set the desired width
+                                height: 90, // Set the desired height
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    'images/google.png',
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(),
+                                  child: Text(
+                                    userInfo.projects[2].title,
+                                    // 'Google Stock\n Price Prediction',
+                                    style: TextStyle(
+                                      color: Colors.teal.shade900,
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
