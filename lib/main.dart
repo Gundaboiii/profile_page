@@ -1,7 +1,5 @@
-//profile page
 import 'package:flutter/material.dart';
 
-// Data model class for user information
 class UserInfo {
   final String name;
   final String position;
@@ -24,7 +22,6 @@ class UserInfo {
   });
 }
 
-// Data model class for education information
 class EducationInfo {
   final String logo;
   final String name;
@@ -37,7 +34,6 @@ class EducationInfo {
   });
 }
 
-// Data model class for project information
 class ProjectInfo {
   final String title;
   final String description;
@@ -48,7 +44,6 @@ class ProjectInfo {
   });
 }
 
-// UserInfoPage widget to display user information
 class UserInfoPage extends StatelessWidget {
   final UserInfo userInfo;
 
@@ -115,7 +110,6 @@ class UserInfoPage extends StatelessWidget {
   }
 }
 
-// The main function is starting point for all the flutter apps.
 void main() {
   UserInfo userInfo = UserInfo(
     name: 'Ronak Dhingra',
@@ -135,7 +129,6 @@ void main() {
         name: 'Thadomal Shahani Engineering College',
         gpa: '3.56 GPA',
       ),
-      // Add more education info as needed
     ],
     projects: [
       ProjectInfo(
@@ -150,16 +143,10 @@ void main() {
         title: 'Google Stock\n Price Prediction',
         description: 'Description of Project 1',
       ),
-      // Add more project info as needed
     ],
   );
 
-  // Hand the user info object to the root widget
   runApp(Myapp(userInfo: userInfo));
-  // runApp(
-  //   Myapp(home: UserInfoPage(userInfo: userInfo)),
-  //   // Myapp(),
-  // );
 }
 
 class Myapp extends StatelessWidget {
@@ -174,15 +161,13 @@ class Myapp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Align the column vertically
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white, // Set the background color
-                  borderRadius:
-                      BorderRadius.circular(10), // Set the border radius
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 margin: EdgeInsets.symmetric(
                   vertical: 10.0,
@@ -193,8 +178,8 @@ class Myapp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 100, // Set the desired width
-                      height: 100, // Set the desired height
+                      width: 100,
+                      height: 100,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
@@ -203,7 +188,6 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      // padding: EdgeInsets.all(10.0),
                       margin: EdgeInsets.symmetric(horizontal: 30.0),
                       child: Column(
                         children: [
@@ -214,20 +198,17 @@ class Myapp extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Source Sans Pro',
                                 fontSize: 20,
-                                // letterSpacing: 2.5,
                                 color: Colors.teal.shade500,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Container(
-                            // padding: EdgeInsets.all(10.0),
                             child: Text(
                               userInfo.position,
                               style: TextStyle(
                                 fontFamily: 'Source Sans Pro',
                                 fontSize: 20.0,
-                                // letterSpacing: 2.5,
                                 color: Colors.teal.shade500,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -237,11 +218,9 @@ class Myapp extends StatelessWidget {
                             padding: EdgeInsets.all(10.0),
                             child: Text(
                               userInfo.company,
-                              // 'Techno Enterprise',
                               style: TextStyle(
                                 fontFamily: 'Source Sans Pro',
                                 fontSize: 20.0,
-                                // letterSpacing: 2.5,
                                 color: Colors.teal.shade500,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -255,9 +234,8 @@ class Myapp extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white, // Set the background color
-                  borderRadius:
-                      BorderRadius.circular(10), // Set the border radius
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 margin: EdgeInsets.symmetric(
                   vertical: 10.0,
@@ -267,12 +245,7 @@ class Myapp extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      // color: Colors.white,
                       padding: EdgeInsets.all(10.0),
-                      // margin: EdgeInsets.symmetric(
-                      //   vertical: 10.0,
-                      //   horizontal: 25.0,
-                      // ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -295,12 +268,7 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      // color: Colors.white,
                       padding: EdgeInsets.all(10.0),
-                      // margin: EdgeInsets.symmetric(
-                      //   vertical: 10.0,
-                      //   horizontal: 25.0,
-                      // ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -323,12 +291,7 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      // color: Colors.white,
                       padding: EdgeInsets.all(10.0),
-                      // margin: EdgeInsets.symmetric(
-                      //   vertical: 10.0,
-                      //   horizontal: 25.0,
-                      // ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -367,7 +330,6 @@ class Myapp extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Container(
-                        // padding: EdgeInsets.symmetric(),
                         child: Text(
                           'Education',
                           style: TextStyle(
@@ -383,7 +345,6 @@ class Myapp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            // padding: EdgeInsets.symmetric(vertical: 10.0),
                             padding: EdgeInsets.only(right: 30.0),
                             child: Column(
                               children: [
@@ -471,9 +432,7 @@ class Myapp extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      // padding: EdgeInsets.all(10.0),
                       child: Container(
-                        // padding: EdgeInsets.symmetric(),
                         child: Text(
                           'Projects',
                           style: TextStyle(
@@ -537,7 +496,6 @@ class Myapp extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(),
                                   child: Text(
                                     userInfo.projects[1].title,
-                                    // 'Twitter Sentiment\n Analysis',
                                     style: TextStyle(
                                       color: Colors.teal.shade900,
                                       fontFamily: 'Source Sans Pro',
@@ -552,8 +510,8 @@ class Myapp extends StatelessWidget {
                             children: [
                               Container(
                                 padding: EdgeInsets.only(left: 10),
-                                width: 80, // Set the desired width
-                                height: 90, // Set the desired height
+                                width: 80,
+                                height: 90,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.asset(
@@ -567,7 +525,6 @@ class Myapp extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(),
                                   child: Text(
                                     userInfo.projects[2].title,
-                                    // 'Google Stock\n Price Prediction',
                                     style: TextStyle(
                                       color: Colors.teal.shade900,
                                       fontFamily: 'Source Sans Pro',
