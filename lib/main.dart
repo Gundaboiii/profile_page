@@ -47,31 +47,32 @@ class ProjectInfo {
 class UserInfoPage extends StatelessWidget {
   final UserInfo userInfo;
 
-  UserInfoPage({required this.userInfo});
+  const UserInfoPage({super.key, required this.userInfo});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Information'),
+        title: const Text('User Information'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Name: ${userInfo.name}',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text('Position: ${userInfo.position}'),
             Text('Company: ${userInfo.company}'),
             Text('Phone: ${userInfo.phone}'),
             Text('Email: ${userInfo.email}'),
             Text('Address: ${userInfo.address}'),
-            SizedBox(height: 16.0),
-            Text(
+            const SizedBox(height: 16.0),
+            const Text(
               'Education:',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
@@ -89,8 +90,8 @@ class UserInfoPage extends StatelessWidget {
                       ))
                   .toList(),
             ),
-            SizedBox(height: 16.0),
-            Text(
+            const SizedBox(height: 16.0),
+            const Text(
               'Projects:',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
@@ -151,7 +152,7 @@ void main() {
 
 class Myapp extends StatelessWidget {
   final UserInfo userInfo;
-  const Myapp({Key? key, required this.userInfo}) : super(key: key);
+  const Myapp({super.key, required this.userInfo});
   // const Myapp({super.key});
 
   @override
@@ -169,7 +170,7 @@ class Myapp extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 10.0,
                   horizontal: 25.0,
                 ),
@@ -177,7 +178,7 @@ class Myapp extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 100,
                       height: 100,
                       child: ClipRRect(
@@ -188,11 +189,11 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               userInfo.name,
                               style: TextStyle(
@@ -203,19 +204,17 @@ class Myapp extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            child: Text(
-                              userInfo.position,
-                              style: TextStyle(
-                                fontFamily: 'Source Sans Pro',
-                                fontSize: 20.0,
-                                color: Colors.teal.shade500,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            userInfo.position,
+                            style: TextStyle(
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 20.0,
+                              color: Colors.teal.shade500,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Text(
                               userInfo.company,
                               style: TextStyle(
@@ -237,7 +236,7 @@ class Myapp extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 10.0,
                   horizontal: 25.0,
                 ),
@@ -245,15 +244,15 @@ class Myapp extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.phone,
                             color: Colors.teal,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10.0,
                           ),
                           Text(
@@ -268,15 +267,15 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.email,
                             color: Colors.teal,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10.0,
                           ),
                           Text(
@@ -291,15 +290,15 @@ class Myapp extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.home,
                             color: Colors.teal,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10.0,
                           ),
                           Text(
@@ -321,101 +320,97 @@ class Myapp extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 10.0,
                   horizontal: 25.0,
                 ),
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Container(
-                        child: Text(
-                          'Education',
-                          style: TextStyle(
-                            color: Colors.teal.shade900,
-                            fontFamily: 'Source Sans Pro',
-                            fontSize: 20.0,
-                          ),
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Education',
+                        style: TextStyle(
+                          color: Colors.teal.shade900,
+                          fontFamily: 'Source Sans Pro',
+                          fontSize: 20.0,
                         ),
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(right: 30.0),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.school,
-                                  color: Colors.teal,
-                                ),
-                                SizedBox(
-                                  height: 20.0,
-                                ),
-                                Icon(
-                                  Icons.account_balance,
-                                  color: Colors.teal,
-                                ),
-                              ],
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(right: 30.0),
+                          child: const Column(
+                            children: [
+                              Icon(
+                                Icons.school,
+                                color: Colors.teal,
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              Icon(
+                                Icons.account_balance,
+                                color: Colors.teal,
+                              ),
+                            ],
                           ),
-                          Container(
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  userInfo.education[0].name,
-                                  style: TextStyle(
-                                    color: Colors.teal.shade900,
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 20.0,
-                                  ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                userInfo.education[0].name,
+                                style: TextStyle(
+                                  color: Colors.teal.shade900,
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 20.0,
                                 ),
-                                SizedBox(
-                                  height: 10.0,
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                userInfo.education[1].name,
+                                style: TextStyle(
+                                  color: Colors.teal.shade900,
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 20.0,
                                 ),
-                                Text(
-                                  userInfo.education[1].name,
-                                  style: TextStyle(
-                                    color: Colors.teal.shade900,
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  userInfo.education[0].gpa,
-                                  style: TextStyle(
-                                    color: Colors.teal.shade900,
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 20.0,
-                                  ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                userInfo.education[0].gpa,
+                                style: TextStyle(
+                                  color: Colors.teal.shade900,
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 20.0,
                                 ),
-                                SizedBox(
-                                  height: 10.0,
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                userInfo.education[1].gpa,
+                                style: TextStyle(
+                                  color: Colors.teal.shade900,
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 20.0,
                                 ),
-                                Text(
-                                  userInfo.education[1].gpa,
-                                  style: TextStyle(
-                                    color: Colors.teal.shade900,
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -425,118 +420,109 @@ class Myapp extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 10.0,
                   horizontal: 25.0,
                 ),
                 child: Column(
                   children: [
-                    Container(
-                      child: Container(
-                        child: Text(
-                          'Projects',
-                          style: TextStyle(
-                            color: Colors.teal.shade900,
-                            fontFamily: 'Source Sans Pro',
-                            fontSize: 20.0,
-                          ),
-                        ),
+                    Text(
+                      'Projects',
+                      style: TextStyle(
+                        color: Colors.teal.shade900,
+                        fontFamily: 'Source Sans Pro',
+                        fontSize: 20.0,
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                width: 80,
-                                height: 90,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                    'images/ludo.png',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              width: 80,
+                              height: 90,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  'images/ludo.png',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                userInfo.projects[0].title,
+                                // 'Hand Written \nDigit Prediction',
+                                style: TextStyle(
+                                  color: Colors.teal.shade900,
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 15.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              width: 80, // Set the desired width
+                              height: 90, // Set the desired height
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  'images/x.png',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(),
+                                child: Text(
+                                  userInfo.projects[1].title,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 15.0,
                                   ),
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Container(
-                                  // padding: EdgeInsets.symmetric(),
-                                  child: Text(
-                                    userInfo.projects[0].title,
-                                    // 'Hand Written \nDigit Prediction',
-                                    style: TextStyle(
-                                      color: Colors.teal.shade900,
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 15.0,
-                                    ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              width: 80,
+                              height: 90,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  'images/google.png',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(),
+                                child: Text(
+                                  userInfo.projects[2].title,
+                                  style: TextStyle(
+                                    color: Colors.teal.shade900,
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 15.0,
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                width: 80, // Set the desired width
-                                height: 90, // Set the desired height
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                    'images/x.png',
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(),
-                                  child: Text(
-                                    userInfo.projects[1].title,
-                                    style: TextStyle(
-                                      color: Colors.teal.shade900,
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 15.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                width: 80,
-                                height: 90,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                    'images/google.png',
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(),
-                                  child: Text(
-                                    userInfo.projects[2].title,
-                                    style: TextStyle(
-                                      color: Colors.teal.shade900,
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 15.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
